@@ -32,7 +32,7 @@ def show_main_page():
 @app.route("/turn")
 def turn_motor():
     direction = int(request.args.get('direction'))
-    turns = int(request.args.get('turns'))
+    turns = float(request.args.get('turns'))
     speed = int(request.args.get('speed'))
     motor_controller.turn(direction, turns, speed)
     return f'Rotating motor: {direction} - {turns} - {speed}'
