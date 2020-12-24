@@ -6,6 +6,7 @@ import time
 import RPi.GPIO as GPIO
 
 def turn(direction = 1, number_of_turns = 1, speed = 5):
+    print(f'direction: {direction}, turns: {number_of_turns}, speed: {speed}')
     # Use BCM GPIO references
     # instead of physical pin numbers
     GPIO.setmode(GPIO.BCM)
