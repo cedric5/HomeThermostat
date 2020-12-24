@@ -37,3 +37,12 @@ def turn_motor():
     motor_controller.turn(direction, turns, speed)
     return f'Rotating motor: {direction} - {turns} - {speed}'
 
+@app.route("/open")
+def open():
+    motor_controller.turn(1, 0.5, 1)
+    return 'Opend thermostat'
+
+@app.route("/open")
+def close():
+    motor_controller.turn(-1, 0.5, 1)
+    return 'closed thermostat'
