@@ -1,0 +1,10 @@
+import tools
+from flask import Flask, render_template
+from flask import request
+
+def show():
+    content_html = open("templates/home.html").read()
+    template_data = {
+        'content': content_html
+    }
+    return render_template('main.html', **template_data)

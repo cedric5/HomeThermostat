@@ -1,0 +1,56 @@
+<div class="container-fluid">
+    <br>
+    <div class="row justify-content-center">
+        <h2>Kantoor</h2>
+    </div>
+    <br>
+    <div class="card-deck">
+        <div class="card text-center">
+            <div class="card-body">
+                <h5 class="card-title"></h5>
+                <p class="card-text">
+                <h4>Huidige temperatuur: 22 °C</h4>
+                <p>Thermostaat is: <span style="color: red; ">dicht</span></p>
+            </div>
+        </div>
+        <div class="card text-center">
+            <div class="card-body">
+                <h5 class="card-title">Doel temperatuur</h5>
+                <p class="card-text">
+                <h2> 22 °C</h2>
+                <br>
+                <a href="#" id="set-friday" class="btn btn-danger btn-block">+</a>
+                <a href="#" id="set-friday" class="btn btn-primary btn-block">-</a>
+            </div>
+        </div>
+        <div class="card text-center">
+            <div class="card-body">
+                <h5 class="card-title">Debug</h5>
+                <p class="card-text">
+                <h2 id="turn-counter">0</h2>
+                <br>
+                <button onclick="plusTurn()" id="plus-turn" class="btn btn-danger btn-block">+</button>
+                <button onclick="minTurn()" id="min-turn" class="btn btn-primary btn-block">-</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type=text/javascript>
+    var counter = 0
+
+    function plusTurn() {
+        if (counter < 10) {
+            counter++
+            document.getElementById("turn-counter").textContent = counter;
+            console.log('plus')
+        }
+    };
+    function minTurn() {
+        if (counter > 0) {
+            counter--
+            document.getElementById("turn-counter").textContent = counter;
+            console.log('Min')
+        }
+    };
+</script>
