@@ -47,7 +47,6 @@ def turn(direction = 1, number_of_turns = 1, speed = 5):
     print(cycles)
     # Start main loop
     while cycleCounter < cycles:
-        print(cycleCounter)
         cycleCounter = cycleCounter + 1
         # print
         # Seq[StepCounter]
