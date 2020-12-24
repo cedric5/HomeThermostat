@@ -42,7 +42,7 @@ def open():
     motor_controller.turn(1, 0.5, 1)
     return 'Opend thermostat'
 
-@app.route("/open")
+@app.route("/close")
 def close():
     motor_controller.turn(-1, 0.5, 1)
     return 'closed thermostat'
