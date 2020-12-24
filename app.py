@@ -34,6 +34,6 @@ def turn_motor():
     direction = request.args.get('direction')
     turns = request.args.get('turns')
     speed = request.args.get('speed')
-    motor_controller.turn(direction, turns, speed)
+    motor_controller.turn()
     return 'Rotating motor'
 
