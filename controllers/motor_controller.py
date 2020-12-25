@@ -71,3 +71,4 @@ def turn(direction = 1, number_of_turns = 1, speed = 5):
 
         # Wait before moving on
         time.sleep(WaitTime)
+    GPIO.cleanup()
