@@ -1,7 +1,3 @@
-import tools
-from flask import Flask, render_template
-from flask import request
-import sys
 import time
 import RPi.GPIO as GPIO
 

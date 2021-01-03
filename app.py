@@ -11,6 +11,7 @@ import wifi_client
 
 import controllers.home_page as home_page_controller
 import controllers.motor_controller as motor_controller
+import controllers.temp_controller as temp_controller
 
 import controllers.wifi_page as wifi_page_controller
 import controllers.open_close_page as open_close_page_controller
@@ -46,3 +47,7 @@ def open():
 def close():
     motor_controller.turn(-1, 0.5, 1)
     return 'closed thermostat'
+
+@app.route("/temp")
+def get_temp():
+    return temp_controller.get_temp()
