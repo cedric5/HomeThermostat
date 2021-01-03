@@ -40,15 +40,21 @@ def turn_motor():
 
 @app.route("/open")
 def open():
-    motor_controller.turn(1, 0.5, 1)
-    tools.write_config('thermostat_status', 'open')
-    return 'Opend thermostat'
+    if tools.get_config('thermostat_status') == 'closed':
+        motor_controller.turn(1, 0.5, 1)
+        tools.write_config('thermostat_status', 'open')
+        return 'Opend thermostat'
+    else:
+        return 'thermostat already open'
 
 @app.route("/close")
 def close():
-    motor_controller.turn(-1, 0.5, 1)
-    tools.write_config('thermostat_status', 'closed')
-    return 'closed thermostat'
+    if tools.get_config('thermostat_status') == 'open':
+        motor_controller.turn(-1, 0.5, 1)
+        tools.write_config('thermostat_status', 'closed')
+        return 'closed thermostat'
+    else:
+        return 'thermostat already closed'
 
 @app.route("/temp")
 def get_temp():
