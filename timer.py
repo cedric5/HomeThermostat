@@ -10,9 +10,14 @@ import controllers.temp_controller as temp_controller
 
 def check_temps():
     if temp_controller.get_temp_float() >= 22:
-        motor_controller.turn(-1, 0.5, 1)
+        if tools.get_config('thermostat_status') == 'open':
+            motor_controller.turn(-1, 0.5, 1)
+            tools.write_config('thermostat_status','closed')
     else:
-        motor_controller.turn(1, 0.5, 1)
+        if tools.get_config('thermostat_status') == 'closed':
+            motor_controller.turn(1, 0.5, 1)
+            tools.write_config('thermostat_status','open')
+
 
 
 def start_timer():
