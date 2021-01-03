@@ -51,3 +51,5 @@ def close():
 @app.route("/temp")
 def get_temp():
     return temp_controller.get_temp()
+
+timer.start_timer()
