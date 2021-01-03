@@ -7,4 +7,4 @@ def get_temp():
 
     # humidity = round(humidity, 2)
     temperature = round(temperature, 2)
-    return temperature
+    return '{0:0.1f}*C'.format(temperature)
