@@ -21,5 +21,5 @@ def check_temps():
 
 
 def start_timer():
-    threading.Timer(600, start_timer).start()
+    threading.Timer(300, start_timer).start()
     check_temps()
