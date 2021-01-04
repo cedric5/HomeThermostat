@@ -9,7 +9,7 @@ import controllers.temp_controller as temp_controller
 
 
 def check_temps():
-    if temp_controller.get_temp_float() >= 22:
+    if temp_controller.get_temp_float() >= tools.get_config('goal_temp'):
         if tools.get_config('thermostat_status') == 'open':
             motor_controller.turn(-1, 0.5, 1)
             tools.write_config('thermostat_status','closed')
