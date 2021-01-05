@@ -9,48 +9,46 @@
             <div class="card-body">
                 <h5 class="card-title"></h5>
                 <p class="card-text">
-                <h4>Huidige temperatuur: 22 °C</h4>
+                <h4>Huidige temperatuur: {{ actual_temp }} °C</h4>
+                {% if thermostat_status == 'closed' %}
                 <p>Thermostaat is: <span style="color: red; ">dicht</span></p>
+                {% else %}
+                 <p>Thermostaat is: <span style="color: green; ">open</span></p>
+                {% endif %}
             </div>
         </div>
         <div class="card text-center">
             <div class="card-body">
                 <h5 class="card-title">Doel temperatuur</h5>
                 <p class="card-text">
-                <h2> 22 °C</h2>
+                <h2 id="goal-temp"> {{ goal_temp }} °C</h2>
                 <br>
-                <a href="#" id="set-friday" class="btn btn-danger btn-block">+</a>
-                <a href="#" id="set-friday" class="btn btn-primary btn-block">-</a>
-            </div>
-        </div>
-        <div class="card text-center">
-            <div class="card-body">
-                <h5 class="card-title">Debug</h5>
-                <p class="card-text">
-                <h2 id="turn-counter">0</h2>
-                <br>
-                <button onclick="plusTurn()" id="plus-turn" class="btn btn-danger btn-block">+</button>
-                <button onclick="minTurn()" id="min-turn" class="btn btn-primary btn-block">-</button>
+                <button onclick="plusTemp()" class="btn btn-danger btn-block">+</button>
+                <button onclick="minTemp()" id="set-friday" class="btn btn-primary btn-block">-</button>
             </div>
         </div>
     </div>
 </div>
 
 <script type=text/javascript>
-    var counter = 0
+    var temp = {{ goal_temp }}
 
-    function plusTurn() {
-        if (counter < 10) {
-            counter++
-            document.getElementById("turn-counter").textContent = counter;
-            console.log('plus')
-        }
+    const Http = new XMLHttpRequest();
+    const plusUrl ='/temp_plus';
+    const minUrl ='/temp_min';
+
+    function plusTemp() {
+            Http.open('GET', plusUrl)
+            Http.send()
+
+            temp = temp + 0.5
+            document.getElementById("goal-temp").textContent = `${temp} °C`;
     };
-    function minTurn() {
-        if (counter > 0) {
-            counter--
-            document.getElementById("turn-counter").textContent = counter;
-            console.log('Min')
-        }
+    function minTemp() {
+            Http.open('GET', minUrl)
+            Http.send()
+            temp = temp - 0.5
+            document.getElementById("goal-temp").textContent = `${temp} °C`;
     };
+
 </script>

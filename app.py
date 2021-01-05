@@ -1,7 +1,6 @@
 import datetime
 import json
 import os
-import box
 import tools as tools
 import timer as timer
 from flask import Flask
@@ -59,5 +58,17 @@ def close():
 @app.route("/temp")
 def get_temp():
     return temp_controller.get_temp_string()
+
+@app.route("/temp_plus")
+def temp_plus():
+    old_temp = tools.get_config('goal_temp')
+    tools.write_config('goal_temp', old_temp + 0.5)
+    return f'new goal temp: {old_temp + 0.5}'
+
+@app.route("/temp_min")
+def temp_min():
+    old_temp = tools.get_config('goal_temp')
+    tools.write_config('goal_temp', old_temp - 0.5)
+    return f'new goal temp: {old_temp - 0.5}'
 
 timer.start_timer()
