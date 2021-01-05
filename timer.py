@@ -20,7 +20,7 @@ def check_temps():
     print(f'offset_goal_temp: {offset_goal_temp}')
     print(f'actual_temp: {actual_temp}')
 
-    if actual_temp >= offset_goal_temp:
+    if actual_temp >= goal_temp:
         if thermostat_status == 'open':
             print('closing')
             motor_controller.turn(-1, 0.25, 1)
