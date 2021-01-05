@@ -15,9 +15,9 @@ def check_temps():
         offset_goal_temp = goal_temp - 0.8
     else:
         offset_goal_temp = goal_temp + 0.8
-        print('goal_temp:' + goal_temp)
-        print('offset_goal_temp:' + offset_goal_temp)
-        print('actual_temp:' + actual_temp)
+        print(f'goal_temp: {goal_temp}')
+        print(f'offset_goal_temp: {offset_goal_temp}')
+        print(f'actual_temp: {actual_temp}')
 
     if actual_temp >= offset_goal_temp:
         if thermostat_status == 'open':
