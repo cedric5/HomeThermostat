@@ -8,7 +8,7 @@ def show():
     content_html = open("templates/home.html").read()
     template_data = {
         'content': tools.render_page('home',
-                                     {'actual_temp': temp_controller.get_temp_float(),
+                                     {'actual_temp': temp_controller.get_temp_string(),
                                       'thermostat_status': tools.get_config('thermostat_status'),
                                       'goal_temp': tools.get_config('goal_temp'),
                                       })
