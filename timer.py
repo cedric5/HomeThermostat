@@ -7,17 +7,23 @@ import controllers.motor_controller as motor_controller
 import controllers.temp_controller as temp_controller
 
 
-
 def check_temps():
-    if temp_controller.get_temp_float() >= tools.get_config('goal_temp'):
-        if tools.get_config('thermostat_status') == 'open':
-            motor_controller.turn(-1, 0.25, 1)
-            tools.write_config('thermostat_status','closed')
-    else:
-        if tools.get_config('thermostat_status') == 'closed':
-            motor_controller.turn(1, 0.25, 1)
-            tools.write_config('thermostat_status','open')
+    thermostat_status = tools.get_config('thermostat_status')
+    goal_temp = temp_controller.get_temp_float()
 
+    if thermostat_status == 'open':
+        offset_goal_temp = goal_temp - 0.8
+    else:
+        offset_goal_temp = goal_temp + 0.8
+
+    if temp_controller.get_temp_float() >= offset_goal_temp:
+        if thermostat_status == 'open':
+            motor_controller.turn(-1, 0.25, 1)
+            tools.write_config('thermostat_status', 'closed')
+    else:
+        if thermostat_status == 'closed':
+            motor_controller.turn(1, 0.25, 1)
+            tools.write_config('thermostat_status', 'open')
 
 
 def start_timer():
