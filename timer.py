@@ -9,7 +9,7 @@ import controllers.temp_controller as temp_controller
 
 def check_temps():
     thermostat_status = tools.get_config('thermostat_status')
-    goal_temp = temp_controller.get_temp_float()
+    goal_temp = temp_controller.get_config('goal_temp')
     actual_temp = temp_controller.get_temp_float()
     if actual_temp <= goal_temp:
         offset_goal_temp = goal_temp - 0.8
