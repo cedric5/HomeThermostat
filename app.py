@@ -41,7 +41,7 @@ def turn_motor():
 @app.route("/open")
 def open():
     if tools.get_config('thermostat_status') == 'closed':
-        motor_controller.turn(1, 0.5, 1)
+        motor_controller.turn(1, 0.25, 1)
         tools.write_config('thermostat_status', 'open')
         return 'Opend thermostat'
     else:
@@ -50,7 +50,7 @@ def open():
 @app.route("/close")
 def close():
     if tools.get_config('thermostat_status') == 'open':
-        motor_controller.turn(-1, 0.5, 1)
+        motor_controller.turn(-1, 0.25, 1)
         tools.write_config('thermostat_status', 'closed')
         return 'closed thermostat'
     else:
