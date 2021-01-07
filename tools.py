@@ -16,7 +16,10 @@ def get_config(key):
 def write_config(key, value):
     with open('settings.json') as json_data_file:
         settings = json.load(json_data_file)
-        settings[key] = value
+    settings[key] = value
+    with open('settings.json', 'w') as outfile:
+        json.dump(settings, outfile)
+    return
 
 
 def config_is_set(key):
