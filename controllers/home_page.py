@@ -1,11 +1,9 @@
 import tools
-from flask import Flask, render_template
-from flask import request
+from flask import render_template
 import controllers.temp_controller as temp_controller
 
 
 def show():
-    content_html = open("templates/home.html").read()
     template_data = {
         'content': tools.render_page('home',
                                      {'actual_temp': temp_controller.get_temp_string(),
